@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS</title>
+    </head>
+    <body>
+        <h3>Set Timeout : </h3>
+        <button onchange="myTimeOut=setTimeout(alertFunction,5000)">Click me to start</button>
+        
+        <button onclick="clearTimeout(myTimeOut)">Click me to stop</button>
+
+        <br> 
+        <h3>Set Interval : </h3>
+
+        <button id="btnID">Click me to start</button>
+        
+        <button id="btnID2">Click me to stop</button>
+        <br>
+
+        <p id="pID"></p>
+
+        <input id="inputID"/>
+
+    <script>
+        function alertFunction()
+        {
+            alert("It has been 5 seconds")
+        }
+
+        const btnIDRef = document.querySelector('#btnID');
+        const btnIDRef2 = document.querySelector('#btnID2');
+        const pIDRef = document.querySelector('#pID')
+
+        let num=10;
+
+        const showTimer=()=>{
+            timeRef=setInterval(()=>{
+                console.log("Im working");
+                
+                num=num-1;
+                
+                pIDRef.innerHTML = `${num}`
+                if(num==0)
+                {
+                    clearInterval(timeRef);
+                    console.log("STopping");
+                }
+            },1000)
+
+        }
+
+       
+
+        btnIDRef.addEventListener('click',showTimer)
+        btnIDRef2.addEventListener('click',()=>{ clearInterval(timeRef)})
+      
+        btnIDRef2.disabled = false;
+
+        inputRef = document.getElementById('inputID');
+
+        inputRef.addEventListener("keydown",function(event){
+            console.log(event.keyCode);
+            if(event.keyCode==13){
+                btnID.click();
+            }
+        })
+
+        
+
+
+
+
+
+
+
+
+
+    </script>
+    </body>
+</html>
